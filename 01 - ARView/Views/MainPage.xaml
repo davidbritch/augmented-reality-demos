@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ARKitDemo.Controls"
+             xmlns:viewmodels="clr-namespace:ARKitDemo.ViewModels"
+             x:Class="ARKitDemo.Views.MainPage"
+             x:DataType="viewmodels:MainPageViewModel">
+    <Grid>
+        <controls:ARView IsSessionRunning="{Binding IsARActive}" />
+        <VerticalStackLayout VerticalOptions="End" Margin="20" Spacing="6">
+            <Button Text="Start AR" 
+                    Command="{Binding StartARCommand}" 
+                    BackgroundColor="Green" 
+                    TextColor="White" />
+            <Button Text="Stop AR" 
+                    Command="{Binding StopARCommand}" 
+                    BackgroundColor="Red" 
+                    TextColor="White" />
+            <Label Text="{Binding StatusMessage}" 
+                   BackgroundColor="Black" 
+                   TextColor="White" 
+                   Padding="10" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
