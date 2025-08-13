@@ -1,2 +1,3 @@
-# augmented-reality-demos
-Augmented reality demos for iOS using .NET MAUI
+# Augmented reality demos
+
+This repo contains augmented reality demos for iOS using .NET MAUI.
