@@ -1,22 +1,21 @@
 using ARKit;
 using Microsoft.Maui.Handlers;
 using ARKitDemo.Controls;
-using ARKitDemo.Services;
+using ARKitDemo.Platforms.iOS;
 
 namespace ARKitDemo.Handlers;
 
 public class ARViewHandler : ViewHandler<ARView, ARSCNView>
 {
-    ARService _arService;
+    MauiARView? _mauiARView;
 
     public static IPropertyMapper<ARView, ARViewHandler> Mapper = new PropertyMapper<ARView, ARViewHandler>(ViewMapper)
     {
         [nameof(ARView.IsSessionRunning)] = MapIsSessionRunning
     };
 
-    public ARViewHandler(IARService arService) : base(Mapper)
+    public ARViewHandler() : base(Mapper)
     {
-        _arService = (ARService)arService;
     }
 
     protected override ARSCNView CreatePlatformView()
@@ -28,7 +27,8 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
             ShowsStatistics = true
         };
 
-        _arService.SetARView(arView);
+        _mauiARView = new MauiARView();
+        _mauiARView.SetARView(arView);
 
         return arView;
     }
@@ -38,9 +38,9 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
         if (handler is ARViewHandler arHandler && view is ARView arView)
         {
             if (arView.IsSessionRunning)
-                arHandler._arService?.StartARSession();
+                arHandler._mauiARView?.StartARSession();
             else
-                arHandler._arService?.StopARSession();
+                arHandler._mauiARView?.StopARSession();
         }
     }
 
@@ -54,8 +54,8 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
 
     protected override void DisconnectHandler(ARSCNView platformView)
     {
-        if (_arService != null)
-            _arService.StopARSession();
+        if (_mauiARView != null)
+            _mauiARView.StopARSession();
 
         base.DisconnectHandler(platformView);
     }

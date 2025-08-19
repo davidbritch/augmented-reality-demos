@@ -2,7 +2,6 @@
 using ARKitDemo.Controls;
 using ARKitDemo.Handlers;
 using ARKitDemo.ViewModels;
-using ARKitDemo.Services;
 
 namespace ARKitDemo;
 
@@ -27,7 +26,6 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddSingleton<IARService, ARService>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 
 		return builder.Build();

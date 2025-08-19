@@ -1,14 +1,14 @@
 using ARKit;
 using UIKit;
 
-namespace ARKitDemo.Services;
+namespace ARKitDemo.Platforms.iOS;
 
-public class ARService : IARService
+public class MauiARView
 {
     ARSCNView? _arView;
     ARSession? _arSession;
 
-    public bool IsARSupported()
+    public static bool IsARSupported()
     {
         return ARConfiguration.IsSupported;
     }

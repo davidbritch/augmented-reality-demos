@@ -1,7 +1,7 @@
 using SceneKit;
 using UIKit;
 
-namespace ARKitDemo.Services;
+namespace ARKitDemo.Platforms.iOS;
 
 public class CubeNode : SCNNode
 {

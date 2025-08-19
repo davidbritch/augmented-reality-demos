@@ -30,7 +30,5 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses the camera for augmented reality features.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses location for AR positioning.</string>
 </dict>
 </plist>

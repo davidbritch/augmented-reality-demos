@@ -1,28 +1,25 @@
+using ARKitDemo.Platforms.iOS;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ARKitDemo.Services;
 
 namespace ARKitDemo.ViewModels;
 
 public partial class MainPageViewModel : ObservableObject
 {
-    readonly IARService _arService;
-
     [ObservableProperty]
     public bool isARActive;
 
     [ObservableProperty]
     string statusMessage = "AR ready.";
 
-    public MainPageViewModel(IARService arService)
+    public MainPageViewModel()
     {
-        _arService = arService;
     }
 
     [RelayCommand]
     void StartAR()
     {
-        if (_arService.IsARSupported())
+        if (MauiARView.IsARSupported())
         {
             IsARActive = true;
             StatusMessage = "AR session started.";
