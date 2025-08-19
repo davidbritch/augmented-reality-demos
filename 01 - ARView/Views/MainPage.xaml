@@ -5,6 +5,9 @@
              xmlns:viewmodels="clr-namespace:ARKitDemo.ViewModels"
              x:Class="ARKitDemo.Views.MainPage"
              x:DataType="viewmodels:MainPageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel />
+    </ContentPage.BindingContext>
     <Grid>
         <controls:ARView IsSessionRunning="{Binding IsARActive}" />
         <VerticalStackLayout VerticalOptions="End" Margin="20" Spacing="6">
