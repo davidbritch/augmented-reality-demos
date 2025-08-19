@@ -12,10 +12,6 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     string statusMessage = "AR ready.";
 
-    public MainPageViewModel()
-    {
-    }
-
     [RelayCommand]
     void StartAR()
     {
