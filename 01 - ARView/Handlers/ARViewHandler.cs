@@ -57,6 +57,7 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
         if (_mauiARView != null)
             _mauiARView.StopARSession();
 
+        platformView.Dispose();
         base.DisconnectHandler(platformView);
     }
 }
