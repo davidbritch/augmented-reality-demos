@@ -54,8 +54,7 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
 
     protected override void DisconnectHandler(ARSCNView platformView)
     {
-        if (_mauiARView != null)
-            _mauiARView.StopARSession();
+        _mauiARView?.StopARSession();
 
         platformView.Dispose();
         base.DisconnectHandler(platformView);
