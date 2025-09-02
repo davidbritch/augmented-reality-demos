@@ -79,8 +79,8 @@ public class MauiARView : UIView
         float height = 0.1f;
 
         UIImage? image = UIImage.FromFile("dotnet_bot.png");
-        var planeNode = new ImageNode(image, width, height);
-        _arView?.Scene.RootNode.AddChildNode(planeNode);
+        var imageNode = new ImageNode(image, width, height);
+        _arView?.Scene.RootNode.AddChildNode(imageNode);
     }
 
     void HandleTapGesture(UITapGestureRecognizer? sender)
