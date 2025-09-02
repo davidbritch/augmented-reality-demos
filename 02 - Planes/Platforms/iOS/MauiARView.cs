@@ -76,10 +76,10 @@ public class MauiARView : UIView
     void AddContent()
     {
         float width = 0.1f;
-        float length = 0.1f;
+        float height = 0.1f;
 
         UIImage? image = UIImage.FromFile("dotnet_bot.png");
-        var planeNode = new ImageNode(width, length, image);
+        var planeNode = new ImageNode(image, width, height);
         _arView?.Scene.RootNode.AddChildNode(planeNode);
     }
 
