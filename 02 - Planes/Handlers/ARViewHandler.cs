@@ -23,7 +23,6 @@ public class ARViewHandler : ViewHandler<ARView, ARSCNView>
         var arView = new ARSCNView()
         {
             AutoenablesDefaultLighting = true,
-            DebugOptions = ARSCNDebugOptions.ShowWorldOrigin,
             ShowsStatistics = true
         };
 
