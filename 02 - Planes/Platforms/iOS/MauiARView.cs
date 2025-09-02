@@ -12,8 +12,6 @@ public class MauiARView : UIView
     UITapGestureRecognizer? _tapGesture;
     UIPinchGestureRecognizer? _pinchGesture;
     UIPanGestureRecognizer? _panGesture;
-    float _currentAngleZ;
-    float _newAngleZ;
 
     public static bool IsARSupported()
     {
@@ -93,6 +91,8 @@ public class MauiARView : UIView
         SCNNode? node = hitTest?.Node;
         node?.RemoveFromParentNode();
         _arView?.RemoveGestureRecognizer(_tapGesture!);
+        _arView?.RemoveGestureRecognizer(_pinchGesture!);
+        _arView?.RemoveGestureRecognizer(_panGesture!);
     }
 
     void HandlePinchGesture(UIPinchGestureRecognizer? sender)
