@@ -3,9 +3,9 @@ using UIKit;
 
 namespace ARKitDemo.Platforms.iOS;
 
-public class PlaneNode : SCNNode
+public class ImageNode : SCNNode
 {
-    public PlaneNode(float width, float length, UIImage? image)
+    public ImageNode(float width, float length, UIImage? image)
     {
         var rootNode = new SCNNode
         {
