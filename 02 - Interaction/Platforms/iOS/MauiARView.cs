@@ -12,6 +12,8 @@ public class MauiARView : UIView
     UITapGestureRecognizer? _tapGesture;
     UIPinchGestureRecognizer? _pinchGesture;
     UIPanGestureRecognizer? _panGesture;
+    bool _gestureRecognizersAdded;
+    SCNNode? _node;
 
     public static bool IsARSupported()
     {
@@ -37,6 +39,8 @@ public class MauiARView : UIView
 
     public void StopARSession()
     {
+        RemoveGestureRecognizers();
+        _node?.RemoveFromParentNode();
         _arSession?.Pause();
     }
 
@@ -69,6 +73,19 @@ public class MauiARView : UIView
 
         _panGesture = new UIPanGestureRecognizer(HandlePanGesture);
         _arView?.AddGestureRecognizer(_panGesture);
+
+        _gestureRecognizersAdded = true;
+    }
+
+    void RemoveGestureRecognizers()
+    {
+        if (_gestureRecognizersAdded)
+        {
+            _arView?.RemoveGestureRecognizer(_tapGesture!);
+            _arView?.RemoveGestureRecognizer(_pinchGesture!);
+            _arView?.RemoveGestureRecognizer(_panGesture!);
+            _gestureRecognizersAdded = false;
+        }
     }
 
     void AddContent()
@@ -77,8 +94,8 @@ public class MauiARView : UIView
         float height = 0.1f;
 
         UIImage? image = UIImage.FromFile("dotnet_bot.png");
-        var imageNode = new ImageNode(image, width, height);
-        _arView?.Scene.RootNode.AddChildNode(imageNode);
+        _node = new ImageNode(image, width, height);
+        _arView?.Scene.RootNode.AddChildNode(_node);
     }
 
     void HandleTapGesture(UITapGestureRecognizer? sender)
@@ -90,9 +107,7 @@ public class MauiARView : UIView
 
         SCNNode? node = hitTest?.Node;
         node?.RemoveFromParentNode();
-        _arView?.RemoveGestureRecognizer(_tapGesture!);
-        _arView?.RemoveGestureRecognizer(_pinchGesture!);
-        _arView?.RemoveGestureRecognizer(_panGesture!);
+        RemoveGestureRecognizers();
     }
 
     void HandlePinchGesture(UIPinchGestureRecognizer? sender)
