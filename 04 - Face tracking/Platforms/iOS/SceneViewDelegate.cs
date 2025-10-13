@@ -7,7 +7,7 @@ public class SceneViewDelegate : ARSCNViewDelegate
 {
     public override void DidAddNode(ISCNSceneRenderer renderer, SCNNode node, ARAnchor anchor)
     {
-        if (anchor is ARFaceAnchor faceAnchor)
+        if (anchor is ARFaceAnchor)
         {
             ARSCNFaceGeometry? faceGeometry = ARSCNFaceGeometry.Create(renderer.Device!);
             node.Geometry = faceGeometry;
